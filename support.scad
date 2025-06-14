@@ -1,3 +1,6 @@
+//translate([-110,7,-epaisseur-30])
+//import("/Users//Downloads/Corsica_Map.stl");
+
 epaisseur = 3;
 font_size = 6;
 nom = "prénom nom";
@@ -6,25 +9,32 @@ duree = "2024-2027";
 
 //Plaque avec le nom
 rotate([0,270,0])
-    linear_extrude(height=110, center=true)
+    linear_extrude(height=100, center=true)
         polygon(points=[[0,0],[30,0],[0,30]]);
 
 //Support arrière
-translate([-20,0,-epaisseur])
-    cube([40,150,epaisseur], center=false);
-    
-translate([0,150,-epaisseur])
+translate([-50,0,-epaisseur-30])
+    cube([100,210,epaisseur], center=false);
+//Disque de droite    
+translate([30,210,-epaisseur-30])
 linear_extrude(height=epaisseur, center=false)
     circle(20);
-
+//Disque de gauche    
+translate([-30,210,-epaisseur-30])
+linear_extrude(height=epaisseur, center=false)
+    circle(20);
+//Rectangle du haut entre les disques
+translate([-30,200,-epaisseur-30])
+    cube([60,30,epaisseur], center=false);
+    
 //plage de fond 
-translate([0,15,-epaisseur/2])
-    cube([110,30,epaisseur], center=true);
+translate([0,15,-epaisseur/2-15])
+    cube([100,30,epaisseur+30], center=true);
 
 //Texte
 color("blue")
 rotate([315,0,0])
-    translate([0,11,15])
+    translate([0,10,15])
         linear_extrude(height=8, center=false)
             text("CIRISI Solenzara", size=font_size, font="Arial", valign="center", halign="center");
             
@@ -41,7 +51,7 @@ rotate([315,0,0])
             text(duree, size=font_size, font="Arial", valign="center", halign="center");
             
 // Paramètres du cadre
-cadre_largeur = 100; // Largeur du cadre
+cadre_largeur = 90; // Largeur du cadre
 cadre_hauteur = 35; // Hauteur du cadre
 cadre_epaisseur = 4; // Epaisseur du cadre en relief
 cadre_epaisseur_trait = 2; // Epaisseur du trait du cadre
